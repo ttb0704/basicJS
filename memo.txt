@@ -15,3 +15,10 @@ fatal: The remote end hung up unexpectedly
 오늘 마주한 문제 3)
 fatal: destination path 'pwa-tutorial' already exists and is not an empty directory.
 ==> 리포지토리를 클론하시려는 폴더에 이미 git 파일이 존재해서 오류가 나는 것 -> 새로운 폴더에 다시 클론
+
+오늘 마주한 문제 4)
+error : src refspec master does not match any 
+==> git init
+    git add .
+    git commit -m "message"
+    https://junheejang.tistory.com/221
