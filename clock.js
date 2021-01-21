@@ -13,7 +13,7 @@ function loadClock(){
     time = `${hours<10?`0${hours}`:hours} : `;
     time += `${minutes<10?`0${minutes}`:minutes} : `;
     time += `${seconds<10?`0${seconds}`:seconds}`;
-    console.log(time);
+    //console.log(time);
     clock.innerText = time;
     }
 
