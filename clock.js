@@ -1,4 +1,4 @@
-const clockContainer = document.querySelector(".js-clock");
+const clockContainer = document.querySelector(".clock");
 const clock = clockContainer.querySelector("span");
 
 function loadClock(){

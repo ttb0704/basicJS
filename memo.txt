@@ -1,24 +1,31 @@
-오늘 만난 문제 1)
-git push -u origin master
+error 1) $ git push -u origin master
 ssh: connect to host github.com port 22: Connection timed out
 fatal: The remote end hung up unexpectedly
 ==> 오류시 참고
     https://gist.github.com/Tamal/1cc77f88ef3e900aeae65f0e5e504794
 
 
-오늘 마주한 문제 2)
+error 2)
  Permission denied (publickey).
 ==> 등록되지 않은 기기에서 clone이나 push가 일어남 -> 인증문제 -> ssh가 등록되지 않아 접근권한이 없다
     https://zeddios.tistory.com/120
 
 
-오늘 마주한 문제 3)
+error 3)
 fatal: destination path 'pwa-tutorial' already exists and is not an empty directory.
 ==> 리포지토리를 클론하시려는 폴더에 이미 git 파일이 존재해서 오류가 나는 것 -> 새로운 폴더에 다시 클론
 
-오늘 마주한 문제 4)
+
+error 4) $ git push -u origin master
 error : src refspec master does not match any 
 ==> git init
     git add .
     git commit -m "message"
     https://junheejang.tistory.com/221
+
+
+error 5) $ git pull origin master
+From https://github.com/ttb0704/basicJS
+ * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+===> git pull --allow-unrelated-histories
