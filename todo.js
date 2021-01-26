@@ -4,7 +4,7 @@ const toDoInput = toDoContainer.querySelector("input");
 const toDoList = toDoContainer.querySelector(".todo-list");
 
 const todos_LS = "todos";
-const todos =[];
+var todos =[];
 
 function loadTodos(){
     const loadTodos = localStorage.getItem(todos_LS);
@@ -16,7 +16,6 @@ function loadTodos(){
             paintToDo(todo.text);
         });
     }
-    
 }
 
 function submitHandler(event){
@@ -33,8 +32,8 @@ function paintToDo(text){
     const newID = todos.length+1;
     delBtn.innerText ="X";
     span.innerText = text;
-    li.appendChild(delBtn);
     li.appendChild(span);
+    li.appendChild(delBtn);    
     li.id=newID;
     toDoList.appendChild(li);
     const toDosObj={
@@ -42,10 +41,29 @@ function paintToDo(text){
         text:text
     }        
     todos.push(toDosObj);
-    localStorage.setItem(todos_LS,JSON.stringify(todos));
+    saveLS()
+    delBtn.addEventListener("click",deleteTodo);
     
 }
 
+function deleteTodo(event){
+    var todo = event.target.parentNode;
+    var todoID = todo.id;
+    //console.log("a"+ todoID);
+    //todos.forEach( function(e){
+    //    console.log("b"+e.id) 
+    //});
+    const clearTodos = todos.filter(function(todo){
+        return todo.id != parseInt(todoID);
+    });
+    todos = clearTodos;
+    saveLS()
+    todo.remove();
+}
+
+function saveLS(){
+    localStorage.setItem(todos_LS,JSON.stringify(todos));
+}
 
 
 function init(){
