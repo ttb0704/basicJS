@@ -10,8 +10,8 @@ function loadClock(){
 
     // clock.innerText = `${hours} : ${minutes} : ${seconds}`;
     // `${hours<10?`0${hours}`:hours} : ${minutes<10?`0${minutes}`:minutes} : ${seconds<10?`0${seconds}`:seconds}`;
-    time = `${hours<10?`0${hours}`:hours} : `;
-    time += `${minutes<10?`0${minutes}`:minutes} : `;
+    time = `${hours<10?`0${hours}`:hours}:`;
+    time += `${minutes<10?`0${minutes}`:minutes}:`;
     time += `${seconds<10?`0${seconds}`:seconds}`;
     //console.log(time);
     clock.innerText = time;
