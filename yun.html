@@ -1,0 +1,166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+	tr td { padding:15px; }
+	tr td:nth-child(1) { font-weight:bold; }
+</style>
+<script src='/eum_.js'></script></head>
+
+<body>
+<table>
+	<tr>
+    	<td>rem</td>
+        <td>
+html {font-size:10px;}
+@media only screen and ( max-width:320px) {  html {font-size:8px;} }
+@media only screen and ( min-width:320px) and ( max-width:360px ) { html {font-size:9px;} }
+/*@media only screen and ( min-width:600px) { html {font-size:12px;} }
+  @media only screen and ( min-width:769px) and (orientation:landscape) { html {font-size:16px;} }*/
+/*@media only screen and (min-width:768px) {  html{font-size:100%;} }*/
+		</td>
+    <tr>
+    <tr>
+    	<td>디바이스체크</td>
+        <td>//모바일 디바이스 체크
+var isMobile = {
+	Android: function(){
+		return navigator.userAgent.match(/Android/i) == null ? false : true;
+	},
+	BlackBerry: function(){
+		return navigator.userAgent.match(/BlackBerry/i) == null ? false : true;
+	},
+	iOS: function(){
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i) == null ? false : true;
+	},
+	iPhone :function(){
+		return navigator.userAgent.match(/iPhone/i) == null ? false : true;
+	},
+	iPad :function(){
+		return navigator.userAgent.match(/iPad/i) == null ? false : true;
+	},
+	iPhoneVersion :function(){
+		var $sliceStart = navigator.userAgent.indexOf('iPhone OS') + 10,
+			$sliceEnd = $sliceStart + 2,
+			$version = parseFloat(navigator.userAgent.slice($sliceStart,$sliceEnd));
+		return $version;
+	},
+	Opera: function(){
+		return navigator.userAgent.match(/Opera Mini/i) == null ? false : true;
+	},
+	Windows: function(){
+		return navigator.userAgent.match(/IEMobile/i) == null ? false : true;
+	},
+	tablet: function(){
+		if(isMobile.any()){
+			if(window.screen.width < window.screen.height){
+				return window.screen.width > 760 ? true : false;
+			}else{
+				return window.screen.height > 760 ? true : false;
+			}
+		}
+	},
+	any: function(){
+		return (isMobile.Android() || isMobile.iOS() || isMobile.BlackBerry() || isMobile.Opera() || isMobile.Windows());
+	},
+	check: function(){
+		if(isMobile.tablet()){
+			$('html').addClass('tablet');
+		}else{
+			$('html').addClass('mobile');
+		}
+		if(isMobile.iOS())$('html').addClass('ios');
+		if(isMobile.Android())$('html').addClass('android');
+		//if(isMobile.iPhoneVersion() == 12)$('html').addClass('ios12');
+	}
+};</td>
+    </tr>
+    <tr>
+    	<td>앱인지 체크: isAppChk(),isAppChk('ios'),isAppChk('android')</td>
+        <td>var isAppChk = function(os){
+	if(typeof _isDevice != 'undefined'){
+		if(_isDevice == 'A'){
+			switch(os){
+				case 'ios':
+					if(isMobile.iOS()){
+						return true;
+					}else{
+						return false;
+					}
+					break;
+				case 'android':
+					if(isMobile.Android()){
+						return true;
+					}else{
+						return false;
+					}
+					break;
+				default:
+					if(os == undefined){
+						return true;
+					}else{
+						console.log('isAppChk 함수 os 오류');
+						return false;
+					}
+					break;
+			}
+		}else{
+			return false;
+		}
+	}else{
+		return false;
+	}
+}</td>
+    </tr>
+    <tr>
+    	<td>select ISO대응 CSS</td>
+        <td>
+select,
+::-webkit-input-placeholder{font-family:'Noto Sans';font-weight:400;color:#c2c4c6;opacity:1;text-align:left;}
+:-moz-placeholder{font-family:'Noto Sans';font-weight:400;color:#c2c4c6;opacity:1;text-align:left;}
+::-moz-placeholder{font-family:'Noto Sans';font-weight:400;color:#c2c4c6;opacity:1;text-align:left;}
+:-ms-input-placeholder{font-family:'Noto Sans';font-weight:400;color:#c2c4c6;opacity:1;text-align:left;}
+input[type="radio"],
+input[type="checkbox"]{position:absolute;width:1px;height:1px;margin:-1px;border:0;overflow:hidden;padding:0;clip:rect(0,0,0,0);-webkit-appearance:none}        
+        </td>
+    </tr>
+    <tr>
+    	<td>숨김처리 css</td>
+        <td>
+.offscreen {position:absolute;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);font-size:3px;line-height:0.5;}        
+        </td>
+    </tr>
+    <tr>
+    	<td>select-옵션 선택시 이벤트</td>
+        <td>
+<select id="mobileCarrier" class="selbox off" title="통신사 선택">
+    <option value="">통신사 선택</option>
+    <option value="1">SKT</option>
+    <option value="2">KT</option>
+    <option value="3">LG U+</option>
+</select>
+<br/>
+$(document).on('change', 'select', function(){
+    var $val = $(this).val(),
+        $title = $(this).attr('title');
+    if($val == ''){
+        $(this).addClass('off');
+    }else if($title == '이메일 도메인 선택' && ($val == '' || $val == 0)){
+        $(this).addClass('off');
+    }else{
+        $(this).removeClass('off');
+    }
+});
+        </td>
+    </tr>
+    <tr>
+    	<td></td>
+        <td></td>
+    </tr>
+    
+</table>
+</body>
+</html>
